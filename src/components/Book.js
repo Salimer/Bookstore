@@ -1,45 +1,59 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Book = ({ book }) => (
-  <Section>
-    <article className="left">
-      <div className="book-details">
-        <p className="genre">{book.genre}</p>
-        <p className="title">{book.title}</p>
-        <p className="author">{book.author}</p>
-      </div>
-      <div className="interactions">
-        <button type="button" className="comments">Comments</button>
-        <button type="button" className="remove">Remove</button>
-        <button type="button" className="edit">Edit</button>
-      </div>
-    </article>
-    <article className="middle">
-      <div className="circle" />
-      <div className="progress-text">
-        <p className="percentage">{book.completed}</p>
-        <p className="completed">Completed</p>
-      </div>
-    </article>
-    <article className="right">
-      <div className="current-chapter-container">
-        <p className="current-chapter">CURRENT CHAPTER</p>
-        <p className="book-chapter">{book.chapter}</p>
-      </div>
-      <button type="button" className="update-progress">UPDATE PROGRESS</button>
-    </article>
-  </Section>
-);
+const Book = ({ book, handleRemoveBookClick }) => {
+  const handleRemove = () => {
+    console.log(book.id);
+    handleRemoveBookClick(book.id);
+  };
+  return (
+    <Section>
+      <article className="left">
+        <div className="book-details">
+          <p className="genre">{book.genre}</p>
+          <p className="title">{book.title}</p>
+          <p className="author">{book.author}</p>
+        </div>
+        <div className="interactions">
+          <button type="button" className="comments">Comments</button>
+          <button
+            type="button"
+            className="remove"
+            onClick={handleRemove}
+          >
+            Remove
+          </button>
+          <button type="button" className="edit">Edit</button>
+        </div>
+      </article>
+      <article className="middle">
+        <div className="circle" />
+        <div className="progress-text">
+          <p className="percentage">{book.completed}</p>
+          <p className="completed">Completed</p>
+        </div>
+      </article>
+      <article className="right">
+        <div className="current-chapter-container">
+          <p className="current-chapter">CURRENT CHAPTER</p>
+          <p className="book-chapter">{book.chapter}</p>
+        </div>
+        <button type="button" className="update-progress">UPDATE PROGRESS</button>
+      </article>
+    </Section>
+  );
+};
 
 Book.propTypes = {
   book: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     genre: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     completed: PropTypes.string.isRequired,
     chapter: PropTypes.string.isRequired,
   }).isRequired,
+  handleRemoveBookClick: PropTypes.func.isRequired,
 };
 
 export default Book;
