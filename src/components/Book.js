@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Book = ({ book }) => (
   <Section>
@@ -30,6 +31,16 @@ const Book = ({ book }) => (
     </article>
   </Section>
 );
+
+Book.propTypes = {
+  book: PropTypes.shape({
+    genre: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    completed: PropTypes.string.isRequired,
+    chapter: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default Book;
 
