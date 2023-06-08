@@ -8,6 +8,7 @@ const AddBook = ({ handleAddBookClick }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!title || !author) return;
     handleAddBookClick(title, author);
     setTitle('');
     setAuthor('');
