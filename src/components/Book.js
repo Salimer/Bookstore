@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const Book = ({ book, handleRemoveBookClick }) => {
   const handleRemove = () => {
-    console.log(book.id);
     handleRemoveBookClick(book.id);
   };
   return (
