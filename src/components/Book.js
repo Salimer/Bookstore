@@ -1,32 +1,32 @@
 import styled from 'styled-components';
 
-const Book = () => (
+const Book = ({ book }) => (
   <Section>
-    <article className='left'>
+    <article className="left">
       <div className="book-details">
-        <p className='genre'>Book.Genre</p>
-        <p className='title'>The Hunger Games</p>
-        <p className='author'>Book.Author</p>
+        <p className="genre">{book.genre}</p>
+        <p className="title">{book.title}</p>
+        <p className="author">{book.author}</p>
       </div>
       <div className="interactions">
-        <button className='comments'>Comments</button>
-        <button className='remove'>Remove</button>
-        <button className='edit'>Edit</button>
+        <button type="button" className="comments">Comments</button>
+        <button type="button" className="remove">Remove</button>
+        <button type="button" className="edit">Edit</button>
       </div>
     </article>
-    <article className='middle'>
-        <div className='circle'></div>
-        <div className="progress-text">
-            <p className='percentage'>64%</p>
-            <p className='completed'>Completed</p>
-        </div>
+    <article className="middle">
+      <div className="circle" />
+      <div className="progress-text">
+        <p className="percentage">{book.completed}</p>
+        <p className="completed">Completed</p>
+      </div>
     </article>
-    <article className='right'>
-        <div className='current-chapter-container'>
-            <p className='current-chapter'>CURRENT CHAPTER</p>
-            <p className='book-chapter'>Book.chapter</p>
-        </div>
-        <button className='update-progress'>UPDATE PROGRESS</button>
+    <article className="right">
+      <div className="current-chapter-container">
+        <p className="current-chapter">CURRENT CHAPTER</p>
+        <p className="book-chapter">{book.chapter}</p>
+      </div>
+      <button type="button" className="update-progress">UPDATE PROGRESS</button>
     </article>
   </Section>
 );
@@ -47,7 +47,6 @@ background-color: #fff;
             height: 1.125rem;
             margin: 0 2.438rem 0 0;
             opacity: 0.5;
-            
             font-size: 0.875rem;
             font-weight: bold;
             font-stretch: normal;
@@ -60,7 +59,6 @@ background-color: #fff;
             width: 12.313rem;
             height: 1.813rem;
             margin: 0.188rem 20.188rem 0 0;
-            
             font-size: 1.375rem;
             font-weight: bold;
             font-stretch: normal;
@@ -73,7 +71,6 @@ background-color: #fff;
             width: 6.688rem;
             height: 1.188rem;
             margin: 0.25rem 0 0;
-            
             font-size: 0.875rem;
             font-weight: 300;
             font-stretch: normal;
@@ -103,7 +100,6 @@ background-color: #fff;
             width: 4.563rem;
             height: 1.188rem;
             margin: 0.188rem 0.938rem 0.125rem 0;
-            
             font-size: 0.875rem;
             font-weight: 300;
             font-stretch: normal;
@@ -121,7 +117,6 @@ background-color: #fff;
             width: 4.563rem;
             height: 1.188rem;
             margin: 0.188rem 0.938rem 0.125rem 0;
-            
             font-size: 0.875rem;
             font-weight: 300;
             font-stretch: normal;
@@ -152,7 +147,6 @@ background-color: #fff;
             width: 4.25rem;
             height: 2.438rem;
             margin: 0.063rem 5.75rem 0 0.688rem;
-            
             font-size: 2rem;
             font-weight: normal;
             font-stretch: normal;
@@ -166,7 +160,6 @@ background-color: #fff;
             height: 1.125rem;
             margin: 0.438rem 4.938rem 0.75rem 0.75rem;
             opacity: 0.5;
-            
             font-size: 0.875rem;
             font-weight: normal;
             font-stretch: normal;
@@ -188,7 +181,6 @@ background-color: #fff;
             height: 1.125rem;
             margin: 0.063rem 3.625rem 0 3.688rem;
             opacity: 0.5;
-            
             font-size: 0.813rem;
             font-weight: 300;
             font-stretch: normal;
@@ -201,7 +193,6 @@ background-color: #fff;
             width: 4.688rem;
             height: 1.313rem;
             margin: 0.438rem 6.813rem 0.25rem 3.688rem;
-            
             font-size: 1rem;
             font-weight: 300;
             font-stretch: normal;
