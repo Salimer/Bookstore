@@ -143,6 +143,8 @@ background-color: #fff;
         border-image-slice: 1;
     }
     .progress-text {
+        border-right: 1px solid #e8e8e8;
+        
         .percentage {
             width: 4.25rem;
             height: 2.438rem;
