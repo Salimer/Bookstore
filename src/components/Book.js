@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Book = ({ book, handleRemoveBookClick }) => {
+  // const circleValue = parseInt(book.completed)
   const handleRemove = () => {
     handleRemoveBookClick(book.id);
   };
@@ -29,7 +30,7 @@ const Book = ({ book, handleRemoveBookClick }) => {
       </article>
       <article className="middle">
         <div className="circle">
-          <CircularProgressbar value={book.completed} text={`${book.completed}`} />
+          <CircularProgressbar value={parseInt(book.completed, 10)} text={`${book.completed}`} />
         </div>
         <div className="progress-text">
           <p className="percentage">{book.completed}</p>
@@ -62,18 +63,21 @@ Book.propTypes = {
 export default Book;
 
 const Section = styled.section`
+border: solid 1px #f0f0f0;
 display: flex;
+justify-content: space-between;
 background-color: #fff;
+margin: 1rem 6.25rem;
+padding: 2rem 1.5rem;
 
  .left {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 40%;
     .book-details {
         .genre {
-            width: 3.063rem;
             height: 1.125rem;
-            margin: 0 2.438rem 0 0;
             opacity: 0.5;
             font-size: 0.875rem;
             font-weight: bold;
@@ -84,9 +88,7 @@ background-color: #fff;
             color: #121212;
         }
         .title {
-            width: 12.313rem;
             height: 1.813rem;
-            margin: 0.188rem 20.188rem 0 0;
             font-size: 1.375rem;
             font-weight: bold;
             font-stretch: normal;
@@ -96,7 +98,6 @@ background-color: #fff;
             color: #121212;
         }
         .author {
-            width: 6.688rem;
             height: 1.188rem;
             margin: 0.25rem 0 0;
             font-size: 0.875rem;
@@ -109,11 +110,11 @@ background-color: #fff;
         }
     }
     .interactions {
-        padding: 1rem 0;
+        padding-top: 1rem;
+        margin: 0.188rem 0.938rem 0.125rem 0;
 
         .comments {
-            margin: 0.188rem 0.938rem 0.125rem 0;
-            
+            margin: 0.188rem 0 0.125rem 0;
             font-size: 0.875rem;
             font-weight: 300;
             font-stretch: normal;
@@ -125,9 +126,7 @@ background-color: #fff;
             border: none;
         }
         .remove {
-            width: 4.563rem;
             height: 1.188rem;
-            margin: 0.188rem 0.938rem 0.125rem 0;
             font-size: 0.875rem;
             font-weight: 300;
             font-stretch: normal;
@@ -140,11 +139,11 @@ background-color: #fff;
             border-left: 1px solid #e8e8e8;
             border-top: none;
             border-bottom: none;
+            padding: 0 0.938rem;
+            margin: 0 0.938rem;
         }
         .edit {
-            width: 4.563rem;
             height: 1.188rem;
-            margin: 0.188rem 0.938rem 0.125rem 0;
             font-size: 0.875rem;
             font-weight: 300;
             font-stretch: normal;
@@ -169,7 +168,6 @@ background-color: #fff;
         border-right: 1px solid #e8e8e8;
         
         .percentage {
-            width: 4.25rem;
             height: 2.438rem;
             margin: 0.063rem 5.75rem 0 0.688rem;
             font-size: 2rem;
@@ -181,7 +179,6 @@ background-color: #fff;
             color: #121212;
         }
         .completed {
-            width: 5rem;
             height: 1.125rem;
             margin: 0.438rem 4.938rem 0.75rem 0.75rem;
             opacity: 0.5;
@@ -202,9 +199,8 @@ background-color: #fff;
 
     .current-chapter-container {
         .current-chapter {
-            width: 7.875rem;
             height: 1.125rem;
-            margin: 0.063rem 3.625rem 0 3.688rem;
+            // margin: 0.063rem 3.625rem 0 3.688rem;
             opacity: 0.5;
             font-size: 0.813rem;
             font-weight: 300;
@@ -215,9 +211,8 @@ background-color: #fff;
             color: #121212;
         }
         .book-chapter {
-            width: 4.688rem;
             height: 1.313rem;
-            margin: 0.438rem 6.813rem 0.25rem 3.688rem;
+            margin: 0.438rem 0 0.25rem 0;
             font-size: 1rem;
             font-weight: 300;
             font-stretch: normal;
@@ -228,9 +223,7 @@ background-color: #fff;
         }
     }
     .update-progress {
-        width: 11.5rem;
-        height: 2.063rem;
-        margin: 0.75rem 0 0.563rem 3.688rem;
+        margin: 0.75rem 0 0.563rem 0;
         padding: 0.438rem 1.188rem 0.5rem 1.375rem;
         border-radius: 3px;
         background-color: #2e90f0;
