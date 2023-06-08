@@ -48,12 +48,7 @@
 # 📖 [BookStore] <a name="about-project"></a>
 
 
-**Math magicians** is a website for all fans of mathematics. It is a Single Page App (SPA) that allows users to:
-
-- Make simple calculations.
-- Read a random quote.
-
-By building this application, I improve my skills in using React.
+**BookStore** is a website that stores books names, authors, genre, and the user's progress on reading. Implementing this project to learn how to use React and Redux in the context of a real application.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -124,14 +119,14 @@ Example commands:
 
 ```sh
   cd my-folder
-  git clone https://github.com/Salimer/Math-magicians.git
+  git clone https://github.com/Salimer/BookStore.git
 ```
 
 using Ubuntu:
 
 ```sh
   cd my-desired-folder
-  git clone https://github.com/Salimer/Math-magicians.git
+  git clone https://github.com/Salimer/BookStore.git
 ```
 
 For more information on how to clone or fork a repository:
