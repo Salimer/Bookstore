@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Book from './Book';
 import AddBook from './AddBook';
 
@@ -15,13 +16,11 @@ const ListBooks = () => {
     },
   ]);
 
-  const handleAddBookClick = (e) => {
-    e.preventDefault();
-    console.log('The link was clicked.');
+  const handleAddBookClick = (title, author) => {
     const newBook = {
-      id: 2,
-      title: 'Holy Moly',
-      author: 'Salim',
+      id: uuidv4(),
+      title,
+      author,
       category: 'Action',
       genre: 'Action',
       completed: '40%',
