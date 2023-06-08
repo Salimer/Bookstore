@@ -12,7 +12,7 @@
 <div align="center">
   
   <br/>
-<h1 align="center">Math Magicians</h1>
+<h1 align="center">BookStore</h1>
 </div>
 
 
@@ -24,7 +24,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 \[Math Magicians\] ](#-math-magicians-)
+- [📖 \[BookStore\] ](#-bookstore-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -45,7 +45,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Math Magicians] <a name="about-project"></a>
+# 📖 [BookStore] <a name="about-project"></a>
 
 
 **Math magicians** is a website for all fans of mathematics. It is a Single Page App (SPA) that allows users to:
