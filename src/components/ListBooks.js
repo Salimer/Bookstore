@@ -1,4 +1,5 @@
 import Book from './Book';
+import AddBook from './AddBook';
 
 const ListBooks = () => {
   const books = [
@@ -17,6 +18,7 @@ const ListBooks = () => {
         {books.map((book) => (
             <Book key={book.id} book={book} />
             ))}
+        <AddBook />
     </section>
   );
 };
