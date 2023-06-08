@@ -1,3 +1,5 @@
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -26,7 +28,9 @@ const Book = ({ book, handleRemoveBookClick }) => {
         </div>
       </article>
       <article className="middle">
-        <div className="circle" />
+        <div className="circle">
+          <CircularProgressbar value={book.completed} text={`${book.completed}`} />
+        </div>
         <div className="progress-text">
           <p className="percentage">{book.completed}</p>
           <p className="completed">Completed</p>
@@ -157,14 +161,9 @@ background-color: #fff;
  .middle {
     display: flex;
     align-items: center;
-
+    
     .circle {
-        width: 4.25rem;
-        height: 4.25rem;
-        border-style: solid;
-        border-width: 5px;
-        border-image-source: linear-gradient(to bottom, var(--medium-blue), #379cf6);
-        border-image-slice: 1;
+      max-width: 6.25rem;
     }
     .progress-text {
         border-right: 1px solid #e8e8e8;
