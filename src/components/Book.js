@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Book = ({ book, handleRemoveBookClick }) => {
-  // const circleValue = parseInt(book.completed)
   const handleRemove = () => {
     handleRemoveBookClick(book.id);
   };
