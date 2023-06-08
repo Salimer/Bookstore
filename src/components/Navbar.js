@@ -4,12 +4,12 @@ import styled from 'styled-components';
 const Navbar = () => (
   <Nav>
     <h1 className="title">Bookstore CMS</h1>
-    <ul>
+    <ul className="navigation">
       <li>
-        <Link to="/">Home</Link>
+        <Link className="link" to="/">BOOKS</Link>
       </li>
       <li>
-        <Link to="/categories">Categories</Link>
+        <Link className="link" to="/categories">Categories</Link>
       </li>
     </ul>
   </Nav>
@@ -18,7 +18,13 @@ const Navbar = () => (
 export default Navbar;
 
 const Nav = styled.nav`
+display: flex;
+align-items: center;
 height: 5.938rem;
+padding: 0 6.25rem;
+background-color: #fff;
+margin-bottom: 3.125rem;
+border-bottom: 1px solid #e8e8e8;
 
     .title {
         width: 15rem;
@@ -32,5 +38,23 @@ height: 5.938rem;
         line-height: normal;
         letter-spacing: normal;
         color: #0090ff;
+    }
+    .navigation {
+        display: flex;
+        gap: 2.5rem;
+
+        .link {
+            width: 3.688rem;
+            height: 1rem;
+            margin: 1.125rem 2.563rem 0.688rem 0;
+            font-family: Montserrat;
+            font-size: 0.813rem;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: 1.9px;
+            color: #121212;
+        }
     }
 `;
