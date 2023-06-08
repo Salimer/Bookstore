@@ -27,7 +27,6 @@ const ListBooks = () => {
       chapter: '13',
     };
     setBooks((prev) => [...prev, newBook]);
-    console.log(books);
   };
 
   const handleRemoveBookClick = (id) => {
