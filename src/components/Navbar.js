@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { CgProfile } from 'react-icons/cg';
 
 const Navbar = () => (
   <Nav>
@@ -12,6 +13,9 @@ const Navbar = () => (
         <Link className="link" to="/categories">Categories</Link>
       </li>
     </ul>
+    <div className="profile">
+      <CgProfile className="icon" />
+    </div>
   </Nav>
 );
 
@@ -55,6 +59,15 @@ border-bottom: 1px solid #e8e8e8;
             line-height: normal;
             letter-spacing: 1.9px;
             color: #121212;
+        }
+    }
+    .profile {
+        margin-left: auto;
+        
+        .icon {
+            width: auto;
+            height: 2.313rem;
+            color: #0090ff;
         }
     }
 `;
