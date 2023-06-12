@@ -3,7 +3,26 @@ import { v4 as uuidv4 } from 'uuid';
 
 const storedBooks = () => {
   const storedBooks = localStorage.getItem('booksData');
-  return storedBooks ? JSON.parse(storedBooks) : [];
+  return storedBooks ? JSON.parse(storedBooks) : [
+    {
+      item_id: 'item1',
+      title: 'The Great Gatsby',
+      author: 'John Smith',
+      category: 'Fiction',
+    },
+    {
+      item_id: 'item2',
+      title: 'Anna Karenina',
+      author: 'Leo Tolstoy',
+      category: 'Fiction',
+    },
+    {
+      item_id: 'item3',
+      title: 'The Selfish Gene',
+      author: 'Richard Dawkins',
+      category: 'Nonfiction',
+    },
+  ];
 };
 const initialState = {
   books: storedBooks(),
@@ -21,13 +40,10 @@ const booksArrSlice = createSlice({
       const bookTitle = action.payload[0];
       const bookAuthor = action.payload[1];
       const newBook = {
-        id: uuidv4(),
+        item_id: uuidv4(),
         title: bookTitle,
         author: bookAuthor,
         category: 'Action',
-        genre: 'Action',
-        completed: '40%',
-        chapter: '13',
       };
       state.books = [...state.books, newBook];
     },
