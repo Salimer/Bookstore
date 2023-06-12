@@ -2,8 +2,11 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { removeBook } from '../redux/features/booksArrSlice';
 
 const Book = ({ book, handleRemoveBookClick }) => {
+  const dispatch = useDispatch();
   const handleRemove = () => {
     handleRemoveBookClick(book.id);
   };
@@ -20,7 +23,9 @@ const Book = ({ book, handleRemoveBookClick }) => {
           <button
             type="button"
             className="remove"
-            onClick={handleRemove}
+            onClick={() => {
+              dispatch(removeBook(id));
+            }}
           >
             Remove
           </button>
