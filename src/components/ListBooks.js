@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useSelector } from 'react-redux';
 import Book from './Book';
 import AddBook from './AddBook';
 
 const ListBooks = () => {
-  const [books, setBooks] = useState(() => {
-    const storedBooks = localStorage.getItem('booksData');
-    return storedBooks ? JSON.parse(storedBooks) : [];
-  });
+  const books = useSelector((store) => store.bookstore);
 
   const saveBooksToLocalStorage = (items) => {
     localStorage.setItem('booksData', JSON.stringify(items));
