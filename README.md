@@ -91,7 +91,7 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 
-- [Live Demo Link](https://salimer.github.io/Math-magicians/)
+- [Live Demo Link](https://bookstore-m1ib.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

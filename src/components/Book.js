@@ -2,11 +2,11 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { removeBook } from '../redux/books/booksArrSlice';
 
-const Book = ({ book, handleRemoveBookClick }) => {
-  const handleRemove = () => {
-    handleRemoveBookClick(book.id);
-  };
+const Book = ({ book }) => {
+  const dispatch = useDispatch();
   return (
     <Section>
       <article className="left">
@@ -20,7 +20,9 @@ const Book = ({ book, handleRemoveBookClick }) => {
           <button
             type="button"
             className="remove"
-            onClick={handleRemove}
+            onClick={() => {
+              dispatch(removeBook(book.id));
+            }}
           >
             Remove
           </button>
@@ -49,14 +51,13 @@ const Book = ({ book, handleRemoveBookClick }) => {
 
 Book.propTypes = {
   book: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     completed: PropTypes.string.isRequired,
     chapter: PropTypes.string.isRequired,
   }).isRequired,
-  handleRemoveBookClick: PropTypes.func.isRequired,
 };
 
 export default Book;
