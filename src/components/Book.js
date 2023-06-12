@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeBook } from '../redux/books/booksArrSlice';
+import Button from './Button';
 
 const Book = ({ book }) => {
   const dispatch = useDispatch();
@@ -16,17 +17,16 @@ const Book = ({ book }) => {
           <p className="author">{book.author}</p>
         </div>
         <div className="interactions">
-          <button type="button" className="comments">Comments</button>
-          <button
-            type="button"
+          <Button className="comments">Comments</Button>
+          <Button
             className="remove"
             onClick={() => {
               dispatch(removeBook(book.item_id));
             }}
           >
             Remove
-          </button>
-          <button type="button" className="edit">Edit</button>
+          </Button>
+          <Button className="edit">Edit</Button>
         </div>
       </article>
       <article className="middle">
@@ -43,7 +43,7 @@ const Book = ({ book }) => {
           <p className="current-chapter">CURRENT CHAPTER</p>
           <p className="book-chapter">Chapter 13</p>
         </div>
-        <button type="button" className="update-progress">UPDATE PROGRESS</button>
+        <Button className="update-progress">UPDATE PROGRESS</Button>
       </article>
     </Section>
   );
