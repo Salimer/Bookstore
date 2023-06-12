@@ -11,7 +11,7 @@ const Book = ({ book }) => {
     <Section>
       <article className="left">
         <div className="book-details">
-          <p className="genre">{book.genre}</p>
+          <p className="genre">{book.category}</p>
           <p className="title">{book.title}</p>
           <p className="author">{book.author}</p>
         </div>
@@ -21,7 +21,7 @@ const Book = ({ book }) => {
             type="button"
             className="remove"
             onClick={() => {
-              dispatch(removeBook(book.id));
+              dispatch(removeBook(book.item_id));
             }}
           >
             Remove
@@ -31,17 +31,17 @@ const Book = ({ book }) => {
       </article>
       <article className="middle">
         <div className="circle">
-          <CircularProgressbar value={parseInt(book.completed, 10)} text={`${book.completed}`} />
+          <CircularProgressbar value={60} />
         </div>
         <div className="progress-text">
-          <p className="percentage">{book.completed}</p>
+          <p className="percentage">60%</p>
           <p className="completed">Completed</p>
         </div>
       </article>
       <article className="right">
         <div className="current-chapter-container">
           <p className="current-chapter">CURRENT CHAPTER</p>
-          <p className="book-chapter">{book.chapter}</p>
+          <p className="book-chapter">Chapter 13</p>
         </div>
         <button type="button" className="update-progress">UPDATE PROGRESS</button>
       </article>
@@ -51,12 +51,10 @@ const Book = ({ book }) => {
 
 Book.propTypes = {
   book: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
+    item_id: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
-    completed: PropTypes.string.isRequired,
-    chapter: PropTypes.string.isRequired,
   }).isRequired,
 };
 
