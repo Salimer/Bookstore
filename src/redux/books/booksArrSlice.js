@@ -3,7 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const storedBooks = () => {
   const storedBooks = localStorage.getItem('booksData');
-  return storedBooks ? JSON.parse(storedBooks) : [
+  const storedBooksArr = JSON.parse(storedBooks);
+  const template = [
     {
       item_id: 'item1',
       title: 'The Great Gatsby',
@@ -23,7 +24,16 @@ const storedBooks = () => {
       category: 'Nonfiction',
     },
   ];
+
+  if (storedBooks) {
+    if (storedBooksArr.length !== 0) {
+      return storedBooksArr;
+    }
+    return template;
+  }
+  return template;
 };
+
 const initialState = {
   books: storedBooks(),
 };
@@ -34,7 +44,7 @@ const booksArrSlice = createSlice({
   reducers: {
     removeBook: (state, action) => {
       const bookId = action.payload;
-      state.books = state.books.filter((book) => book.id !== bookId);
+      state.books = state.books.filter((book) => book.item_id !== bookId);
     },
     addBook: (state, action) => {
       const bookTitle = action.payload[0];
