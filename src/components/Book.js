@@ -7,9 +7,6 @@ import { removeBook } from '../redux/books/booksArrSlice';
 
 const Book = ({ book }) => {
   const dispatch = useDispatch();
-  // const handleRemove = () => {
-  //   handleRemoveBookClick(book.id);
-  // };
   return (
     <Section>
       <article className="left">
@@ -61,7 +58,6 @@ Book.propTypes = {
     completed: PropTypes.string.isRequired,
     chapter: PropTypes.string.isRequired,
   }).isRequired,
-  // handleRemoveBookClick: PropTypes.func.isRequired,
 };
 
 export default Book;
