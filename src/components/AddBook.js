@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { postBook } from '../redux/books/booksArrSlice';
+import { postBook } from '../redux/books/thunks';
 
 const AddBook = () => {
   const dispatch = useDispatch();
