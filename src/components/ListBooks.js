@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Book from './Book';
 import AddBook from './AddBook';
-import { getBooks } from '../redux/books/booksArrSlice';
+import { getBooks } from '../redux/books/thunks';
 
 const ListBooks = () => {
   const dispatch = useDispatch();
