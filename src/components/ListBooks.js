@@ -11,7 +11,7 @@ const ListBooks = () => {
 
   useEffect(() => {
     dispatch(getBooks());
-  }, []);
+  }, [dispatch]);
 
   // Convert object to an array of books
   const booksArray = Object.entries(books).reduce((acc, [id, bookList]) => {
@@ -19,7 +19,6 @@ const ListBooks = () => {
     return [...acc, ...booksWithId];
   }, []);
 
-  console.log(booksArray);
   return (
     <section>
       {isLoading ? (
