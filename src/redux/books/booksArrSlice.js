@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const initialState = {
   books: [],
+  isLoading: true,
 };
 
 const getBooksURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xqDpmLzvPxikb9A9LRQw/books';
@@ -14,7 +15,7 @@ export const getBooks = createAsyncThunk('books/getBooks', async (thunkAPI) => {
     return response.data;
   } catch (error) {
     console.log(error);
-    return thunkAPI.rejectWithVAlue('something went wrong')
+    return thunkAPI.rejectWithVAlue('something went wrong');
   }
 });
 
@@ -40,17 +41,17 @@ const booksArrSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    .addCase(getBooks.pending, (state) => {
-      state.isLoading = true;
-    })
-    .addCase(getBooks.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.books = action.payload;
-    })
-    .addCase(getBooks.rejected, (state, action) => {
-      console.log(action);
-      state.isLoading = false;
-    })
+      .addCase(getBooks.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getBooks.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.books = action.payload;
+      })
+      .addCase(getBooks.rejected, (state, action) => {
+        console.log(action);
+        state.isLoading = false;
+      });
   },
 });
 
