@@ -3,11 +3,19 @@ import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/booksArrSlice';
 import Button from './Button';
+import { deleteBook, getBooks } from '../redux/books/booksArrSlice';
 
 const Book = ({ book }) => {
   const dispatch = useDispatch();
+  const handleDeleteBook = async () => {
+    try {
+      await dispatch(deleteBook(book.id));
+      await dispatch(getBooks());
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Section>
       <article className="left">
@@ -21,7 +29,7 @@ const Book = ({ book }) => {
           <Button
             className="remove"
             onClick={() => {
-              dispatch(removeBook(book.item_id));
+              handleDeleteBook();
             }}
           >
             Remove
@@ -51,7 +59,7 @@ const Book = ({ book }) => {
 
 Book.propTypes = {
   book: PropTypes.shape({
-    item_id: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
