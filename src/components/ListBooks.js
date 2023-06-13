@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import styled from 'styled-components';
 import Book from './Book';
 import AddBook from './AddBook';
 import { getBooks } from '../redux/books/booksArrSlice';
@@ -20,9 +21,11 @@ const ListBooks = () => {
   }, []);
 
   return (
-    <section>
+    <Section>
       {isLoading ? (
-        <div>Loading...</div>
+        <LoadingSpinner>
+          <Spinner />
+        </LoadingSpinner>
       ) : (
         <>
           {booksArray.map((book) => (
@@ -31,8 +34,35 @@ const ListBooks = () => {
           <AddBook />
         </>
       )}
-    </section>
+    </Section>
   );
 };
 
 export default ListBooks;
+
+const Section = styled.section``;
+
+const LoadingSpinner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+`;
+
+const Spinner = styled.div`
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
