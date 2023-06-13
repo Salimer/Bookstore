@@ -1,42 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-
-const storedBooks = () => {
-  const storedBooks = localStorage.getItem('booksData');
-  const storedBooksArr = JSON.parse(storedBooks);
-  const template = [
-    {
-      item_id: 'item1',
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item2',
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item3',
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      category: 'Nonfiction',
-    },
-  ];
-
-  if (storedBooks) {
-    if (storedBooksArr.length !== 0) {
-      return storedBooksArr;
-    }
-    return template;
-  }
-  return template;
-};
+import axios from 'axios';
 
 const initialState = {
-  books: storedBooks(),
+  books: [],
 };
+
+const getBooksURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xqDpmLzvPxikb9A9LRQw/books';
+
+export const getBooks = createAsyncThunk('books/getBooks', async (thunkAPI) => {
+  try {
+    const response = await axios(getBooksURL);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return thunkAPI.rejectWithVAlue('something went wrong')
+  }
+});
 
 const booksArrSlice = createSlice({
   name: 'booksArr',
@@ -57,6 +37,20 @@ const booksArrSlice = createSlice({
       };
       state.books = [...state.books, newBook];
     },
+  },
+  extraReducers: (builder) => {
+    builder
+    .addCase(getBooks.pending, (state) => {
+      state.isLoading = true;
+    })
+    .addCase(getBooks.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.books = action.payload;
+    })
+    .addCase(getBooks.rejected, (state, action) => {
+      console.log(action);
+      state.isLoading = false;
+    })
   },
 });
 
