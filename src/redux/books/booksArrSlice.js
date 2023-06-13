@@ -30,6 +30,7 @@ export const postBook = createAsyncThunk('books/addBook', async (book, thunkAPI)
   };
   try {
     const response = await axios.post(addBookURL, bookObj);
+    thunkAPI.dispatch(getBooks()); // Dispatch getBooks after successful post
     return response.data;
   } catch (error) {
     console.log(error);
@@ -42,6 +43,7 @@ export const deleteBookURL = 'https://us-central1-bookstore-api-e63c8.cloudfunct
 export const deleteBook = createAsyncThunk('books/deleteBook', async (bookId, thunkAPI) => {
   try {
     const response = await axios.delete(`${deleteBookURL}/${bookId}`);
+    thunkAPI.dispatch(getBooks()); // Dispatch getBooks after successful deletion
     return response.data;
   } catch (error) {
     console.log(error);
