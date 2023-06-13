@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import Button from './Button';
-import { deleteBook } from '../redux/books/booksArrSlice';
+import { deleteBook } from '../redux/books/thunks';
 
 const Book = ({ book }) => {
   const dispatch = useDispatch();
