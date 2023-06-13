@@ -75,7 +75,7 @@ const booksArrSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(postBook.fulfilled, (state) => {
-        state.isLoading = false;
+        state.isLoading = true;
       })
       .addCase(postBook.rejected, (state, action) => {
         console.log(action);
@@ -85,7 +85,7 @@ const booksArrSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteBook.fulfilled, (state) => {
-        state.isLoading = false;
+        state.isLoading = true;
       })
       .addCase(deleteBook.rejected, (state, action) => {
         console.log(action);
