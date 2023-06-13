@@ -7,8 +7,8 @@ const initialState = {
   isLoading: true,
 };
 
+// Get books from API
 const getBooksURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xqDpmLzvPxikb9A9LRQw/books';
-
 export const getBooks = createAsyncThunk('books/getBooks', async (thunkAPI) => {
   try {
     const response = await axios(getBooksURL);
@@ -19,6 +19,36 @@ export const getBooks = createAsyncThunk('books/getBooks', async (thunkAPI) => {
   }
 });
 
+// Add book to API
+export const addBookURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xqDpmLzvPxikb9A9LRQw/books';
+export const postBook = createAsyncThunk('books/addBook', async (book, thunkAPI) => {
+  const bookObj = {
+    item_id: uuidv4(),
+    title: book[0],
+    author: book[1],
+    category: 'Action',
+  };
+  try {
+    const response = await axios.post(addBookURL, bookObj);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return thunkAPI.rejectWithValue('something went wrong');
+  }
+});
+
+// Delete book from API
+export const deleteBookURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xqDpmLzvPxikb9A9LRQw/books';
+export const deleteBook = createAsyncThunk('books/deleteBook', async (bookId, thunkAPI) => {
+  try {
+    const response = await axios.delete(`${deleteBookURL}/${bookId}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return thunkAPI.rejectWithValue('something went wrong');
+  }
+});
+
 const booksArrSlice = createSlice({
   name: 'booksArr',
   initialState,
@@ -26,17 +56,6 @@ const booksArrSlice = createSlice({
     removeBook: (state, action) => {
       const bookId = action.payload;
       state.books = state.books.filter((book) => book.item_id !== bookId);
-    },
-    addBook: (state, action) => {
-      const bookTitle = action.payload[0];
-      const bookAuthor = action.payload[1];
-      const newBook = {
-        item_id: uuidv4(),
-        title: bookTitle,
-        author: bookAuthor,
-        category: 'Action',
-      };
-      state.books = [...state.books, newBook];
     },
   },
   extraReducers: (builder) => {
@@ -51,10 +70,30 @@ const booksArrSlice = createSlice({
       .addCase(getBooks.rejected, (state, action) => {
         console.log(action);
         state.isLoading = false;
+      })
+      .addCase(postBook.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(postBook.fulfilled, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(postBook.rejected, (state, action) => {
+        console.log(action);
+        state.isLoading = false;
+      })
+      .addCase(deleteBook.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteBook.fulfilled, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(deleteBook.rejected, (state, action) => {
+        console.log(action);
+        state.isLoading = false;
       });
   },
 });
 
-export const { removeBook, addBook } = booksArrSlice.actions;
+export const { removeBook } = booksArrSlice.actions;
 
 export default booksArrSlice.reducer;
