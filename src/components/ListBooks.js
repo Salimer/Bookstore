@@ -4,37 +4,30 @@ import Book from './Book';
 import AddBook from './AddBook';
 import { getBooks } from '../redux/books/booksArrSlice';
 
-const Loading = () => (
-  <div className="loading">
-    <h1>Loading...</h1>
-  </div>
-);
-
 const ListBooks = () => {
   const dispatch = useDispatch();
-  const { books, isLoading } = useSelector((store) => store.books);
 
-  const saveBooksToLocalStorage = (items) => {
-    localStorage.setItem('booksData', JSON.stringify(items));
-  };
+  const { books, isLoading } = useSelector((store) => store.booksArr);
 
   useEffect(() => {
     dispatch(getBooks());
-  }, [dispatch]);
+  }, []);
 
-  useEffect(() => {
-    saveBooksToLocalStorage(books);
-  }, [books]);
+  // Convert object to an array of books
+  const booksArray = Object.entries(books).reduce((acc, [id, bookList]) => {
+    const booksWithId = bookList.map((book) => ({ ...book, id }));
+    return [...acc, ...booksWithId];
+  }, []);
 
-  console.log(books);
+  console.log(booksArray);
   return (
     <section>
       {isLoading ? (
-        <Loading />
+        <div>Loading...</div>
       ) : (
         <>
-          {books.map((book) => (
-            <Book key={book.item_id} book={book} />
+          {booksArray.map((book) => (
+            <Book key={book.id} book={book} />
           ))}
           <AddBook />
         </>
