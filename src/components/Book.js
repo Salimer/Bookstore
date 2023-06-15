@@ -4,14 +4,13 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import Button from './Button';
-import { deleteBook, getBooks } from '../redux/books/booksArrSlice';
+import { deleteBook } from '../redux/books/thunks';
 
 const Book = ({ book }) => {
   const dispatch = useDispatch();
   const handleDeleteBook = async () => {
     try {
       await dispatch(deleteBook(book.id));
-      await dispatch(getBooks());
     } catch (error) {
       console.log(error);
     }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { postBook, getBooks } from '../redux/books/booksArrSlice';
+import { postBook } from '../redux/books/thunks';
 
 const AddBook = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,6 @@ const AddBook = () => {
       await dispatch(postBook([title, author]));
       setTitle('');
       setAuthor('');
-      await dispatch(getBooks());
     } catch (error) { console.log(error); }
   };
 
