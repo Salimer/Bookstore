@@ -70,4 +70,17 @@ border-bottom: 1px solid #e8e8e8;
             color: #0090ff;
         }
     }
+    @media (max-width: 1000px) {
+      .navigation {
+        display: none;
+      }
+    }
+
+    @media (max-width: 540px) {
+      padding: 0 1.5rem;
+
+      .title {
+        font-size: 1.5rem;
+      }
+    }
 `;
