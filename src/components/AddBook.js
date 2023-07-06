@@ -36,9 +36,8 @@ const Section = styled.section`
 border-top: 1px solid #e8e8e8;
 margin: 2rem 6.25rem;
     .title {
-        // : 10.875rem;
         height: 1.5rem;
-        margin: 1.813rem 32.75rem 1.188rem 0;
+        margin: 1.813rem auto 1.188rem 0;
         font-size: 1.25rem;
         font-weight: bold;
         font-stretch: normal;
@@ -76,4 +75,19 @@ margin: 2rem 6.25rem;
         }
     }
 
+    @media (max-width: 540px) {
+      margin-right: 0;
+      margin-left: 0;
+      padding: 0 1.5rem;
+
+      .form {
+        .book-title {
+          padding-left: 0.3rem;
+        }
+  
+        .book-author {
+          padding-left: 0.3rem;
+        }
+      }
+    }
 `;
