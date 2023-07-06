@@ -236,4 +236,35 @@ padding: 2rem 1.5rem;
     }
 }
 
+@media (max-width: 1000px) {
+  flex-direction: column;
+  align-items: center;
+
+    .left {
+      width: 100%;
+      align-items: center;
+      order: 1;
+    }
+
+    .middle {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      order: 2;
+
+      .circle {
+        display: none;
+      }
+
+      .progress-text {
+        border-right: none;
+      }
+    }
+
+    .right {
+      width: 100%;
+      align-items: center;
+      order: 3;
+    }
+}
 `;
