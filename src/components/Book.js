@@ -239,18 +239,25 @@ padding: 2rem 1.5rem;
 @media (max-width: 1000px) {
   flex-direction: column;
   align-items: center;
+  border-radius: 1rem;
 
     .left {
       width: 100%;
-      align-items: center;
+      align-items: start;
       order: 1;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgb(232, 232, 232);
     }
 
     .middle {
       width: 100%;
       flex-direction: column;
-      align-items: center;
+      align-items: start;
       order: 2;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgb(232, 232, 232);
+      padding-top: 3rem;
+      display: flex;
 
       .circle {
         display: none;
@@ -258,13 +265,25 @@ padding: 2rem 1.5rem;
 
       .progress-text {
         border-right: none;
+
+        .percentage {
+          margin-left: 0;
+        }
+        .completed {
+          margin-left: 0;
+        }
       }
     }
 
     .right {
       width: 100%;
-      align-items: center;
+      align-items: start;
       order: 3;
+      padding-top: 3rem;
     }
+}
+
+@media (max-width: 540px) {
+  margin: 3rem 0;
 }
 `;
